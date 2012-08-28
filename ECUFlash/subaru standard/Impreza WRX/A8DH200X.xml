@@ -15,6 +15,14 @@
     <checksummodule>subarudbw</checksummodule>
   </romid>
   <include>32BITBASE</include>
+  
+  <!-- alpha AF sensor smoothing scaling and table -->
+  <scaling name="SmoothingFactor" units="Smoothing Factor (%)" toexpr="(x*(-100))+100" frexpr="(x-100)/(-100)" format="%.1f" min="0" max="100" inc="5" storagetype="float" endian="big"/>
+<table name="Front AF Sensor Smoothing Table" category="MERP - TESTING" type="3D" level="2" scaling="SmoothingFactor" address="D1E50">
+   <description>Front AF Sensor Smoothing Factor Table, lower values = less smoothing, DO NOT SET TO ZERO OR LOWER.</description>
+    <table name="Smoothed MAF" type="X Axis" elements="4" scaling="g/s" address="D1E30" />
+    <table name="Engine Load" type="Y Axis" elements="4" scaling="g/rev" address="D1E40" />
+   </table>
  
   	<table name="Hotstart Enrichment Decay Delay" category="Hotstart" address="C81E2" type="1D" level="1" scaling="Hotstart Counter uint16">
 		<description>Delay before the Initial Hotstart Enrichment is decayed by the decay step value.</description>
